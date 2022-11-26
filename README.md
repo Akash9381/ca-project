@@ -62,3 +62,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Excel file import 
+composer require maatwebsite/excel
+
+php artisan make:import ImportData --model=ExcelData
+php artisan make:import IncomeTaxExcel --model=IncomeTax
