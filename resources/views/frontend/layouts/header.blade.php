@@ -13,7 +13,7 @@
             <div class="others-option">
                 <div class="d-flex align-items-center">
                     <div class="option-item">
-                        <a href="login/login.html" class="default-btn text-white">
+                        <a href="{{url('/dashboard')}}" class="default-btn text-white">
                             Dashbord
                             <span></span>
                         </a>
