@@ -19,6 +19,15 @@ $("#userform").validate({
         city:{
             required:true,
             minlength: 2
+        },
+        file:{
+            required:function(element){
+                if($("#tax_type").val()!=null){
+                    return true
+                }else{
+                    return false;
+                }
+            }
         }
     }
 

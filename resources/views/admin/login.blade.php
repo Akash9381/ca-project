@@ -31,9 +31,9 @@
                         <div class="card">
 
                             <!-- Logo -->
-                            <div class="card-header pt-4 pb-4 text-center bg-primary">
-                                <a href="index.html">
-                                    <span><img src="assets/images/logo.png" alt="logo" height="22"></span>
+                            <div class="card-header pt-2 pb-2 text-center bg-primary">
+                                <a href="{{url(route('home'))}}">
+                                    <span><img class="img-fluid" src="{{asset('frontend/assets/img/tax-mall.png')}}" alt="logo" height="22"></span>
                                 </a>
                             </div>
 

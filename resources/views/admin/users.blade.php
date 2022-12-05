@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="content-header row pt-3">
                         <div class="content-header-left col-md-6 col-12">
-                            <h4 class="card-title">Showing 34 of 50 User List </h4>
+                            <h4 class="card-title">Showing {{$user->count()}} of {{$user->total()}} User List </h4>
                         </div>
                         <div class="content-header-right col-md-6 col-12">
                             <div class="btn-group" style="float: right!important;" role="group"
@@ -62,7 +62,7 @@
                                 </tr>
                                 @empty
                                 <tr class="text-center">
-                                    <th colspan="5">
+                                    <th colspan="6">
                                         No records found
                                     </th>
                                 </tr>
@@ -76,3 +76,4 @@
         </div>
     </div>
 @endsection
+

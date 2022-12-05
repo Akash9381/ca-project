@@ -15,7 +15,7 @@
                                 <div class="btn-group mb-1" role="group">
                                     <a href="{{url('/admin/users')}}"
                                         class="btn btn-outline-primary dropdown-menu-right"><i
-                                            class="feather uil-arrow-left icon-left"></i> Back</a>
+                                            class="feather uil-arrow-left icon-left"></i>Back</a>
                                 </div>
                             </div>
                         </div>
@@ -60,8 +60,18 @@
                             @enderror
                         </div>
                         <div class="mb-3 col-12 col-md-6">
+                            <label class="form-label">Tax Type</label>
+                            <select class="form-control" name="tax_type" id="tax_type">
+                                <option selected disabled>Select Tax Type</option>
+                                <option value="income_tax">Income Tax</option>
+                                <option value="gst">GST</option>
+                                <option value="tds">TDS</option>
+                                <option value="roc">ROC</option>
+                            </select>
+                        </div>
+                        <div class="mb-3 col-12 col-md-6 excel" style="display: none">
                             <label class="form-label">Excel File Upload Here</label>
-                            <input class="form-control" name="file" accept=".xlsx, .xls" type="file" >
+                            <input class="form-control" id="file" name="file" accept=".xlsx, .xls" type="file" >
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -69,4 +79,19 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    $("#tax_type").on('change', function(){
+        $('.excel').show();
+    });
+    // $("#userform").submit(function(){
+    //     if($("#tax_type").val()==null){
+    //         alert("null");
+    //     }else{
+    //         alert("value");
+    //     }
+    // })
+</script>
 @endsection

@@ -10,6 +10,32 @@
             <ul class="navbar-nav">
 
             </ul>
+            @if (auth()->user())
+            <div class="others-option" style="margin-right: 20px;">
+                <div class="d-flex align-items-center">
+                    <div class="option-item">
+                        <a href="{{route('user.logout')}}" class="default-btn text-white mr-2" style="background-color: red">
+                            Log-Out
+                            <span></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            @else
+            <div class="others-option" style="margin-right: 20px;">
+                <div class="d-flex align-items-center">
+                    <div class="option-item">
+                        <a href="{{route('user.login')}}" class="default-btn text-white mr-2" style="background-color: green">
+                            Log-in
+                            <span></span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            @endif
+            @if (auth()->user())
             <div class="others-option">
                 <div class="d-flex align-items-center">
                     <div class="option-item">
@@ -21,6 +47,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </nav>

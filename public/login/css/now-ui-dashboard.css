@@ -3645,7 +3645,7 @@ Created using IcoMoon - icomoon.io
 .table>thead>tr>th {
   border-bottom-width: 1px;
   font-size: 1.45em;
-  font-weight: 300;
+  font-weight: 500;
   border: 0;
 }
 
@@ -5972,20 +5972,20 @@ Created using IcoMoon - icomoon.io
 
 
 
-.row{
+/* .row{
   height: 90px;
-}
+} */
 
 
 @media only screen and (max-width: 500px) {
  .carousel.pointer-event {
-  
+
   display: none;
 }
 	.card {
 		top: 110%;
 		right: 45%;
-		
+
 	}
 
 }

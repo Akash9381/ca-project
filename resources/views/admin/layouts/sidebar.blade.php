@@ -2,12 +2,12 @@
 <div class="leftside-menu">
 
     <!-- Logo Light -->
-    <a href="{{url('/admin/dashboard')}}" class="logo logo-light">
+    <a href="{{url('/admin/dashboard')}}"  class="logo logo-light">
         <span class="logo-lg">
-            <img src="{{url('/admin/assets/images/logo.png')}}" alt="logo" height="22">
+            <img style="background-color: white" class="img-fluid" src="{{asset('frontend/assets/img/tax-mall.png')}}" alt="logo" height="22">
         </span>
         <span class="logo-sm">
-            <img src="{{url('/admin/assets/images/logo-sm.png')}}" alt="small logo" height="22">
+            <img class="img-fluid" src="{{asset('login/img/tall img.jpg')}}" alt="small logo" height="22">
         </span>
     </a>
 
