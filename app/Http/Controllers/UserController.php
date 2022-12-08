@@ -25,15 +25,17 @@ class UserController extends Controller
     }
 
     public function InsertUser(Request $request){
+        $array = $request->all();
         $this->validate($request,[
             'name'      => 'required',
             'email'     => 'required|email',
-            'number'    => 'required',
+            'number'    => 'required|integer',
             'pan_card'  => 'required',
             'city'      => 'required'
         ]);
-
-        $user =  User::create($request->all());
+        $array['pan_card'] = trim(strtoupper($request['pan_card']));
+        $array['name'] = trim(ucwords($request['name']));
+        $user =  User::create($array);
         $user->assignRole('user');
         if(!empty($request['tax_type'])){
             $this->validate($request,[
@@ -46,9 +48,9 @@ class UserController extends Controller
                 Excel::import(new IncomeTaxExcel($user->id),$request->file('file')->store('files'));
             }
             elseif ($request['tax_type']=='tds') {
-                return back();
+                Excel::import(new TDSExcel($user->id),$request->file('file')->store('files'));
             }else{
-                return back();
+                Excel::import(new TaxAuditExcel($user->id),$request->file('file')->store('files'));
             }
         }
         return redirect('/admin/users');
@@ -82,6 +84,8 @@ class UserController extends Controller
 
     public function UpdateUser(Request $request,$id=null){
         $array = $request->all();
+        $array['pan_card'] = trim(strtoupper($request['pan_card']));
+        $array['name'] = trim(ucwords($request['name']));
         $user  = User::where('id',$id)->first();
         $user->update($array);
         if(!empty($request['tax_type'])){

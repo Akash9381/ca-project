@@ -10,7 +10,18 @@
             <ul class="navbar-nav">
 
             </ul>
-            @if (auth()->user())
+            @role('admin')
+            <div class="others-option" style="margin-right: 20px;">
+                <div class="d-flex align-items-center">
+                    <div class="option-item">
+                        <a href="{{route('logout')}}" class="default-btn text-white mr-2" style="background-color: red">
+                            Log-Out
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @elserole('user')
             <div class="others-option" style="margin-right: 20px;">
                 <div class="d-flex align-items-center">
                     <div class="option-item">
@@ -18,7 +29,6 @@
                             Log-Out
                             <span></span>
                         </a>
-
                     </div>
                 </div>
             </div>
@@ -34,8 +44,8 @@
                     </div>
                 </div>
             </div>
-            @endif
-            @if (auth()->user())
+            @endrole
+            @role('user')
             <div class="others-option">
                 <div class="d-flex align-items-center">
                     <div class="option-item">
@@ -43,11 +53,22 @@
                             Dashbord
                             <span></span>
                         </a>
-
                     </div>
                 </div>
             </div>
-            @endif
+            @endrole
+            @role('admin')
+            <div class="others-option">
+                <div class="d-flex align-items-center">
+                    <div class="option-item">
+                        <a href="{{route('dashboard')}}" class="default-btn text-white">
+                            Dashbord
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endrole
         </div>
     </div>
 </nav>

@@ -22,12 +22,12 @@ class OTPController extends Controller
                 $account_sid    = getenv("TWILIO_SID");
                 $auth_token     = getenv("TWILIO_TOKEN");
                 $twilio_number  = getenv("TWILIO_FROM");
-                $client = new Client($account_sid, $auth_token);
+                $client         = new Client($account_sid, $auth_token);
                 $client->messages->create($number, [
                     'from' => $twilio_number,
                     'body' => $msg]);
 
-                $user    = User::where('number',$request->number)->first();
+                $user           = User::where('number',$request->number)->first();
                 OTP::updateOrCreate(['number'=>$request->number],
                 [   'user_id' => $user['id'],
                     'number'  => $request->number,
@@ -45,21 +45,26 @@ class OTPController extends Controller
 
     public function OTPVerify(Request $request){
         $this->Validate($request, [
-            'number' => 'required',
-            'otp'    => 'required'
+            'number' => 'required|integer',
+            'otp'    => 'required|integer'
         ]);
         $generatedotp = OTP::where('number',$request->number)->first();
-        if($generatedotp['otp']==$request['otp']){
-            $user = User::where('number',$request['number'])->first();
-            if($user){
-                Auth::login($user);
-                return redirect('/dashboard');
+        if($generatedotp){
+            if($generatedotp['otp']==$request['otp']){
+                $user = User::where('number',$request['number'])->first();
+                if($user){
+                    Auth::login($user);
+                    return redirect('/dashboard');
+                }else{
+                    return redirect('/log-in');
+                }
             }else{
-                return redirect('/log-in');
+                return back()->with('otperror','Invalid OTP');
             }
         }else{
-            return back()->with('otperror','Invalid OTP');
+            return back()->with('otperror','Invalid User');
         }
+
     }
 
 

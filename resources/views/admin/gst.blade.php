@@ -1,26 +1,5 @@
 @extends('admin.layouts.admin_layouts')
 @section('title', 'Tax Mail - Edit GST')
-<style>
-    * {
-      box-sizing: border-box;
-    }
-
-    .zoom {
-      /* padding: 50px; */
-      background-color: green;
-      transition: transform .2s;
-      width: 40px;
-      height: 40px;
-      margin: 0 auto;
-    }
-
-    .zoom:hover {
-      -ms-transform: scale(1.5); /* IE 9 */
-      -webkit-transform: scale(1.5); /* Safari 3-8 */
-      transform: scale(10);
-      margin-bottom: 40px;
-    }
-    </style>
 @section('content')
     <div class="content-page">
         <div class="content">

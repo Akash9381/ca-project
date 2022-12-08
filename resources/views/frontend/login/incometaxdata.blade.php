@@ -172,42 +172,20 @@
     </div>
     </div>
     </div>
-
-@endsection
-@section('js')
-    <script>
-        $('.achnowledgement').click(function(){
-            $("#Achnowledgement").show();
-            $("#Form").hide();
-            $("#Challan").hide();
-            $(".achnowledgement").css('color','#fff');
-            $(".achnowledgement").css('background','green');
-            $(".form").css('color','black');
-            $(".form").css('background','#fff');
-            $(".challan").css('color','black');
-            $(".challan").css('background','#fff');
-        });
-        $('.form').click(function(){
-            $("#Achnowledgement").hide();
-            $("#Form").show();
-            $("#Challan").hide();
-            $(".achnowledgement").css('color','black');
-            $(".achnowledgement").css('background','#fff');
-            $(".form").css('color','#fff');
-            $(".form").css('background','green');
-            $(".challan").css('color','black');
-            $(".challan").css('background','#fff');
-        });
-        $('.challan').click(function(){
-            $("#Achnowledgement").hide();
-            $("#Form").hide();
-            $("#Challan").show();
-            $(".achnowledgement").css('color','black');
-            $(".achnowledgement").css('background','#fff');
-            $(".form").css('color','black');
-            $(".form").css('background','#fff');
-            $(".challan").css('color','#fff');
-            $(".challan").css('background','green');
-        });
-    </script>
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="copy-right text-center">
+        <div class="container">
+            <div class="copy-right-content">
+                <p>
+                    Copyright @2022 Tax Mall. All Rights Reserved Developed by
+                    <a href="http://www.design2creative.com/" target="_blank">
+                    <strong>Design 2Creative</strong>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end Footer -->
 @endsection

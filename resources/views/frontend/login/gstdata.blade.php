@@ -103,7 +103,7 @@
                 @endisset
             </div> --}}
         @isset($gstdocuments)
-        <div class="row text-center mt-5">
+        <div class="row mt-5">
             <div class="col-12">
                 <h3 for=""><u>Achnowledgement</u></h3>
             </div>
@@ -111,13 +111,13 @@
         @forelse ($gstdocuments as $item)
             <div class="row"  >
                 @if ($item['type']=='Achnowledgement')
-                <div class="mb-3 col-md-6 col-12 text-center">
+                <div class="mb-3 col-md-6 col-12">
                     <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/GST/'.$item['documents'])}}" ></iframe><br>
                 </div>
                 @endif
             </div>
             @empty
-        <div class="row text-center">
+        <div class="row ">
             <div class="col-12">
                 <h4 for=""><u>No Documents of Achnowledgement</u></h4>
             </div>
@@ -125,7 +125,7 @@
     </label>
         @endforelse
         <hr>
-        <div class="row text-center">
+        <div class="row ">
             <div class="col-12">
                 <h3 for=""><u>Form</u></h3>
             </div>
@@ -133,14 +133,14 @@
         @foreach ($gstdocuments as $item)
             <div class="row" >
                 @if ($item['type']=='Form')
-                <div class="mb-3 col-md-6 col-12 text-center form_data" >
+                <div class="mb-3 col-md-6 col-12  form_data" >
                     <iframe  width="50%" class="mb-3" height="300" src="{{asset('Library/GST/'.$item['documents'])}}" ></iframe><br>
                 </div>
                 @endif
             </div>
         @endforeach
         <hr>
-        <div class="row text-center">
+        <div class="row ">
             <div class="col-12">
                 <h3 for=""><u>Challan</u></h3>
             </div>
@@ -148,7 +148,7 @@
         @foreach ($gstdocuments as $item)
             <div class="row">
                 @if ($item['type']=='Challan')
-                <div class="mb-3 col-md-6 col-12 text-center">
+                <div class="mb-3 col-md-6 col-12">
                     <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/GST/'.$item['documents'])}}" ></iframe><br>
                 </div>
                 @endif
@@ -158,42 +158,20 @@
     </div>
     </div>
     </div>
-
-@endsection
-@section('js')
-    <script>
-        $('.achnowledgement').click(function(){
-            $("#Achnowledgement").show();
-            $("#Form").hide();
-            $("#Challan").hide();
-            $(".achnowledgement").css('color','#fff');
-            $(".achnowledgement").css('background','green');
-            $(".form").css('color','black');
-            $(".form").css('background','#fff');
-            $(".challan").css('color','black');
-            $(".challan").css('background','#fff');
-        });
-        $('.form').click(function(){
-            $("#Achnowledgement").hide();
-            $("#Form").show();
-            $("#Challan").hide();
-            $(".achnowledgement").css('color','black');
-            $(".achnowledgement").css('background','#fff');
-            $(".form").css('color','#fff');
-            $(".form").css('background','green');
-            $(".challan").css('color','black');
-            $(".challan").css('background','#fff');
-        });
-        $('.challan').click(function(){
-            $("#Achnowledgement").hide();
-            $("#Form").hide();
-            $("#Challan").show();
-            $(".achnowledgement").css('color','black');
-            $(".achnowledgement").css('background','#fff');
-            $(".form").css('color','black');
-            $(".form").css('background','#fff');
-            $(".challan").css('color','#fff');
-            $(".challan").css('background','green');
-        });
-    </script>
+     <!-- Footer Start -->
+    <footer class="footer">
+        <div class="copy-right text-center">
+            <div class="container">
+                <div class="copy-right-content">
+                    <p>
+                        Copyright @2022 Tax Mall. All Rights Reserved Developed by
+                        <a href="http://www.design2creative.com/" target="_blank">
+                        <strong>Design 2Creative</strong>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
 @endsection

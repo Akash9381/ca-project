@@ -9,6 +9,7 @@
     <link href="{{asset('login/dashboard/demo.css')}}" rel="stylesheet" />
     <link href="{{asset('login/css/bootstrap.min.css')}}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         *{
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -24,6 +25,9 @@
             input[type=number] {
             -moz-appearance: textfield;
             }
+            .error{
+                color: red;
+            }
     </style>
 </head>
 <body>
@@ -31,7 +35,7 @@
         <a href="{{route('home')}}"><img src="{{asset('login/img/tall img.jpg')}}" alt="logo"><h1 style="color: #212529">TAX MALL</h1></a>
     </header>
     <fieldset>
-    <form class="text-center shadow rounded mt-5" action="{{url('otpverify')}}" method="POST">
+    <form id="otpform" class="text-center shadow rounded mt-5" action="{{url('otpverify')}}" method="POST">
         @csrf
         <h2> Enter Your Registered Mobile Number</h2>
         @if(session()->has('otperror'))
@@ -44,13 +48,20 @@
         <p class="alert alert-danger error" style="display: none">Enter Valid Number!</p>
             <div class="m-3 text-center">
             <input type="number" class="justify-content-center w-100" value="{{old('number')}}" placeholder="Mobile Number" class="form-control" id="number" name="number">
+            @error('number')
+            <label id="number-error" class="error" for="number">{{$message}}</label>
+            @enderror
             </div>
             <div class="m-3 text-center fs-3">
-                <input type="number" class="justify-content-center w-100" name="otp" placeholder="Enter OTP" class="form-control" >
+                <input type="number" class="justify-content-center w-100" name="otp" minlength='4'
+                maxlength='4' placeholder="Enter OTP" class="form-control" >
+                @error('otp')
+                <label id="otp-error" class="error" for="otp">{{$message}}</label>
+                @enderror
             </div>
 
         <div class="m-3" class="fbut">
-            <a type="button" id="optgenerate" class="btn btn-success w-100" style="color: white">GET OTP</a>
+            <a type="button" id="optgenerate"  class="btn btn-success w-100" style="color: white">GET OTP</a>
         </div>
         <div class="m-3" class="fbut">
             <a href="dashboard.html">
@@ -61,6 +72,21 @@
 
     <script>
         $(document).ready(function(){
+            $("#otpform").validate({
+                rules:{
+                    number:{
+                        required:true,
+                        minlength:10,
+                        maxlength:10
+                    },
+                    otp:{
+                        required:true,
+                        minlength:4,
+                        maxlength:4
+                    }
+                }
+            })
+
             $("#optgenerate").click(function(){
                 let number = $("#number").val();
                 $.ajax({

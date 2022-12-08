@@ -133,5 +133,20 @@
     </div>
     </div>
     </div>
-
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="copy-right text-center">
+        <div class="container">
+            <div class="copy-right-content">
+                <p>
+                    Copyright @2022 Tax Mall. All Rights Reserved Developed by
+                    <a href="http://www.design2creative.com/" target="_blank">
+                    <strong>Design 2Creative</strong>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end Footer -->
 @endsection
