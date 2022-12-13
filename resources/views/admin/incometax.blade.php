@@ -103,6 +103,8 @@
                                 <option value="Form 26AS">Form 26AS</option>
                                 <option value="AIS/TIS">AIS/TIS</option>
                                 <option value="MISC Documents">MISC Documents</option>
+                                <option value="Intimation Order" >Intimation Order</option>
+                                <option value="Json File" >Json File</option>
                             </select>
                             @error('type')
                                 <label id="type-error" class="error" for="type">{{ $message }}</label>
@@ -173,6 +175,24 @@
                         <label class="form-label">MISC Documents</label>
                         @foreach ($incometaxdocuments as $item)
                         @if ($item['type']=='MISC Documents')
+                        <div class="mb-3 col-md-6 col-12 text-center">
+                            <a onclick="return confirm('Are You Sure to Delete?')" href="{{url('admin/income-document-delete/'.$item['id'])}}"><i class="mdi mdi-delete"></i></a><br>
+                            <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/IncomeTax/'.$item['documents'])}}" ></iframe><br>
+                        </div>
+                        @endif
+                        @endforeach
+                        <label class="form-label">Intimation Order</label>
+                        @foreach ($incometaxdocuments as $item)
+                        @if ($item['type']=='Intimation Order')
+                        <div class="mb-3 col-md-6 col-12 text-center">
+                            <a onclick="return confirm('Are You Sure to Delete?')" href="{{url('admin/income-document-delete/'.$item['id'])}}"><i class="mdi mdi-delete"></i></a><br>
+                            <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/IncomeTax/'.$item['documents'])}}" ></iframe><br>
+                        </div>
+                        @endif
+                        @endforeach
+                        <label class="form-label">Json File</label>
+                        @foreach ($incometaxdocuments as $item)
+                        @if ($item['type']=='Json File')
                         <div class="mb-3 col-md-6 col-12 text-center">
                             <a onclick="return confirm('Are You Sure to Delete?')" href="{{url('admin/income-document-delete/'.$item['id'])}}"><i class="mdi mdi-delete"></i></a><br>
                             <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/IncomeTax/'.$item['documents'])}}" ></iframe><br>

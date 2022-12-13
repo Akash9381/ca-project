@@ -20,7 +20,7 @@ class AdminSeeder extends Seeder
             'email'         => 'admin@gmail.com',
             'password'      => Hash::make('d161a@KT%av'),
             'city'          => "Gurgaon",
-            'email_verified_at'=> Carbon::now()
+            'email_verified_at' => Carbon::now()
         ]);
         $user->assignRole('admin');
     }

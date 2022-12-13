@@ -6,8 +6,28 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="content-header row pt-3">
+                        @if(session()->has('success'))
+                            <div class="alert alert-success text-center">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <div class="content-header-left col-md-6 col-12">
-                            <h4 class="card-title">Showing {{$user->count()}} of {{$user->total()}} User List </h4>
+                            <h4 class="card-title mb-3">Showing {{$user->count()}} of {{$user->total()}} User List </h4>
+                            <form action="{{route('useruploded')}}" enctype="multipart/form-data" method="POST" class="col-md-12 float-right p-0">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="file" class="form-control"
+                                    accept=".xlsx" name="file" required>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-secondary" type="submit">
+                                            <i class="uil-upload"></i>
+                                        </button>
+                                    </div>
+                                    @error('file')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
+                                </div>
+                            </form>
                         </div>
                         <div class="content-header-right col-md-6 col-12">
                             <div class="btn-group" style="float: right!important;" role="group"
@@ -35,6 +55,7 @@
                         <table class="table table-striped table-centered mb-0">
                             <thead>
                                 <tr>
+                                    <th>Sr. No.</th>
                                     <th>Name</th>
                                     <th>PAN No.</th>
                                     <th>Email</th>
@@ -44,11 +65,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($user as $data)
+                                @forelse ($user as $index => $data)
                                 <tr>
-                                    <td class="table-user">
-                                        {{$data['name']}}
-                                    </td>
+                                    <td>{{ $index + $user->firstItem() }}</td>
+                                    <td>{{$data['name']}}</td>
                                     <td>{{$data['pan_card']}}</td>
                                     <td>{{$data['email']}}</td>
                                     <td>{{$data['number']}}</td>

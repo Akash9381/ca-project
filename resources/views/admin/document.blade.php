@@ -234,8 +234,16 @@
                         </div>
                         <div class="mb-3 col-12 col-md-6 itr" style="display: none">
                             <label class="form-label">ITR</label>
-                            <input style="text-transform: capitalize" type="text" class="form-control" name="itr"
-                                placeholder="Enter ITR">
+                            <select class="form-control" name="itr" id="itr">
+                                <option selected disabled>Select ITR</option>
+                                <option value="ITR-1" >ITR-1</option>
+                                <option value="ITR-2" >ITR-2</option>
+                                <option value="ITR-3" >ITR-3</option>
+                                <option value="ITR-4" >ITR-4</option>
+                                <option value="ITR-5" >ITR-5</option>
+                                <option value="ITR-6" >ITR-6</option>
+                                <option value="ITR-7" >ITR-7</option>
+                            </select>
                             @error('itr')
                                 <label id="itr-error" class="error" for="itr">{{ $message }}</label>
                             @enderror
@@ -274,6 +282,8 @@
                                 <option value="Form 26AS">Form 26AS</option>
                                 <option value="AIS/TIS">AIS/TIS</option>
                                 <option value="MISC Documents">MISC Documents</option>
+                                <option value="Intimation Order" >Intimation Order</option>
+                                <option value="Json File" >Json File</option>
                             </select>
                         </div>
                         <div class="mb-3 col-12 col-md-6 gst_type" style="display: none">

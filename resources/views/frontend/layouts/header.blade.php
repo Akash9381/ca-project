@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <div class="logo">
-            <a href="index.html">
+            <a href="{{url('/')}}">
                 <h3><img class="tax-logo" src="{{asset('frontend/assets/img/tax-mall.png')}}"></h3>
             </a>
         </div>

@@ -168,6 +168,36 @@
                 @endif
             </div>
         @endforeach
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h3 for=""><u>Intimation Order</u></h3>
+            </div>
+        </div>
+        @foreach ($incometaxdocuments as $item)
+            <div class="row"  >
+                @if ($item['type']=='Intimation Order')
+                <div class="mb-3 col-md-6 col-12 ">
+                    <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/TDS/'.$item['documents'])}}" ></iframe><br>
+                </div>
+                @endif
+            </div>
+        @endforeach
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <h3 for=""><u>Json File</u></h3>
+            </div>
+        </div>
+        @foreach ($incometaxdocuments as $item)
+            <div class="row"  >
+                @if ($item['type']=='Json File')
+                <div class="mb-3 col-md-6 col-12 ">
+                    <iframe width="50%" class="mb-3" height="300" src="{{asset('Library/TDS/'.$item['documents'])}}" ></iframe><br>
+                </div>
+                @endif
+            </div>
+        @endforeach
         @endisset
     </div>
     </div>

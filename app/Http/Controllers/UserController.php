@@ -7,6 +7,7 @@ use App\Imports\ImportData;
 use App\Imports\IncomeTaxExcel;
 use App\Imports\TaxAuditExcel;
 use App\Imports\TDSExcel;
+use App\Imports\UserExcel;
 use App\Models\ExcelData;
 use App\Models\GST;
 use App\Models\IncomeTax;
@@ -70,7 +71,7 @@ class UserController extends Controller
 
     public function DeleteUser($id=null){
         User::where('id',$id)->delete();
-        return redirect('admin/users');
+        return redirect()->back()->with('success','User Delete Successfully.');
     }
 
     public function EditUser($id=null){
@@ -84,7 +85,7 @@ class UserController extends Controller
 
     public function UpdateUser(Request $request,$id=null){
         $array = $request->all();
-        $array['pan_card'] = trim(strtoupper($request['pan_card']));
+        // $array['pan_card'] = trim(strtoupper($request['pan_card']));
         $array['name'] = trim(ucwords($request['name']));
         $user  = User::where('id',$id)->first();
         $user->update($array);
@@ -105,12 +106,22 @@ class UserController extends Controller
                 Excel::import(new TaxAuditExcel($id),$request->file('file')->store('files'));
             }
         }
-        return back();
+        return redirect()->back()->with('success','User Uploaded Successfully');
+    }
+
+    public function UserExcelUploded(Request $request){
+        $this->validate($request,[
+            'file'      => 'required'
+        ]);
+        if(!empty($request['file'])){
+            Excel::import(new UserExcel,$request->file('file')->store('files'));
+        }
+        return redirect()->back()->with('success','User Uploaded Successfully');
     }
 
     public function DeleteData($id=null){
         ExcelData::where('id',$id)->delete();
-        return back();
+        return redirect()->back()->with('success','User Deleted Successfully');
     }
 
     public function UploadDocument($id=null){
@@ -135,10 +146,11 @@ class UserController extends Controller
         if($id){
             $documents = ExcelData::where('id',$id)->first();
             $documents->update($array);
-            return back();
+            return redirect()->back()->with('success','User Uploaded Successfully');
         }else{
             ExcelData::create($array);
             return redirect('admin/edit-user/'.$request['user_id']);
         }
     }
+
 }

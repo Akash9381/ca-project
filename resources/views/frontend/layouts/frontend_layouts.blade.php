@@ -39,7 +39,7 @@
     </div>
 @include('frontend.layouts.header')
 @yield('content')
-
+@include('frontend.layouts.footer')
 
 <div class="go-top">
     <i class="fa fa-chevron-up"></i>
@@ -73,6 +73,7 @@
 <script src="{{asset('frontend/assets/js/contact-form-script.js')}}"></script>
 
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+@yield('js')
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\DownloadDocumentController;
@@ -28,7 +29,14 @@ use Twilio\Rest\Api\V2010\Account\Call\PaymentContext;
 
 Route::get('/', function () {return view('frontend.index');})->name('home');
 Route::get('/home',function(){return view('frontend.index');});
+Route::view('/about-us','frontend.about');
+Route::view('/contact-us','frontend.contact-us');
+Route::view('/pricing-details','frontend.pricing-details');
+Route::view('/privacy-policy','frontend.privacy-policy');
+Route::view('/refunds-policy','frontend.refunds-policy');
+Route::view('/terms-and-conditions','frontend.terms-and-conditions');
 
+Route::post('contactform',[ContactController::class,'Contactform']);
 Route::view('/log-in','frontend.login.login')->name('user.login')->middleware('guest');
 
 Route::post('otpverify',[OTPController::class,'OTPVerify']);
@@ -52,7 +60,7 @@ Route::prefix('admin')->group(function(){
         Route::group(['middleware' => ['role:admin']], function () {
             Route::get('/dashboard',[AuthController::class,'DashBoard'])->name('dashboard');
             Route::get('/logout',[AuthController::class,'Logout'])->name('logout');
-
+            Route::get('/contact',[ContactController::class,'Index']);
             Route::controller(UserController::class)->group(function(){
                 Route::get('/create-user','CreateUser')->name('usercreate');
                 Route::post('/insert_user','InsertUser')->name('insertuser');
@@ -62,6 +70,7 @@ Route::prefix('admin')->group(function(){
                 Route::post('/update-user/{id}','UpdateUser')->name('upadteuser');
                 Route::get('/delete_data/{id}','DeleteData')->name('deletedata');
                 Route::get('/upload-documents/{user_id?}','UploadDocument')->name('uploaddocument');
+                Route::post('/userexceluploaded','UserExcelUploded')->name('useruploded');
             });
 
             Route::controller(GSTController::class)->group(function(){

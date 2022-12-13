@@ -70,6 +70,12 @@
                     <span>Upload Document</span>
                 </a>
             </li>
+            <li class="side-nav-item">
+                <a href="{{url('/admin/contact')}}" class="side-nav-link">
+                    <i class="uil-user"></i>
+                    <span>Contacts</span>
+                </a>
+            </li>
 
         </ul>
         <!--- End Sidemenu -->
